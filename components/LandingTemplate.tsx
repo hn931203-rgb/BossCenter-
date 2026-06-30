@@ -20,8 +20,17 @@ export function LandingTemplate({ content }: { content: LandingContent }) {
     <main className="pb-16 sm:pb-0">
       {/* ============ 1. HERO ============ */}
       <section className="relative overflow-hidden bg-brand text-white">
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand to-brand-light opacity-90" />
-        <div className="relative mx-auto max-w-content px-5 py-16 sm:py-24">
+        {/* 배경 공사 사진 — public/images 에 파일을 넣으면 자동 적용, 없으면 틸 배경 유지 */}
+        {content.hero.backgroundImage && (
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url("${content.hero.backgroundImage}")` }}
+            aria-hidden="true"
+          />
+        )}
+        {/* 가독성용 오버레이 (사진이 비치되, 텍스트가 읽히도록 틸 반투명 그라데이션) */}
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-dark/85 via-brand/65 to-brand/35" />
+        <div className="relative mx-auto max-w-content px-5 py-16 drop-shadow-[0_2px_6px_rgba(0,0,0,0.45)] sm:py-24">
           <div className="mb-6">
             <TrustBadges badges={content.hero.badges} onDark />
           </div>
@@ -39,6 +48,40 @@ export function LandingTemplate({ content }: { content: LandingContent }) {
               onDark
             />
           </div>
+        </div>
+      </section>
+
+      {/* ============ 1-1. 숫자 신뢰단 ============ */}
+      <section className="border-b border-black/[0.06] bg-white">
+        <div className="mx-auto max-w-content px-5 py-12 sm:py-14">
+          {content.stats.heading && (
+            <div className="mb-8">
+              <SectionHeading heading={content.stats.heading} />
+            </div>
+          )}
+          <dl className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4">
+            {content.stats.items.map((stat, i) => (
+              <div key={i} className="text-center">
+                <dt className="sr-only">{stat.label}</dt>
+                <dd>
+                  <span
+                    className="text-4xl font-extrabold tracking-tight text-brand sm:text-5xl"
+                    title={stat.isPlaceholder ? "추정/예시 값 — 실제 실적으로 교체 필요" : undefined}
+                  >
+                    {stat.value}
+                    {stat.unit && <span className="ml-0.5 text-2xl sm:text-3xl">{stat.unit}</span>}
+                  </span>
+                  <p
+                    className={`mt-2 text-sm font-medium text-slate-500 ${
+                      stat.isPlaceholder ? "underline decoration-dashed decoration-slate-300 underline-offset-4" : ""
+                    }`}
+                  >
+                    {stat.label}
+                  </p>
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 

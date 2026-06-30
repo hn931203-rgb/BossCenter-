@@ -29,6 +29,8 @@ export interface HeroContent {
   headline: string;
   subheadline: string;
   badges: TrustBadge[];
+  /** Hero 배경 사진 경로 (public 기준, 예: "/images/hero-demolition.jpg"). 없으면 틸 배경만 사용 */
+  backgroundImage?: string;
 }
 
 /** 아이콘 + 제목 + 설명으로 구성되는 범용 카드 (원인/차별성 등에 재사용) */
@@ -93,6 +95,18 @@ export interface FaqItem {
   answer: string;
 }
 
+/** 숫자 신뢰단 항목 (예: 누적 시공 8,468건) */
+export interface StatItem {
+  /** 숫자/핵심 값 (예: "8,468", "1,000억") */
+  value: string;
+  /** 값 뒤 단위 (예: "건", "원") — 없으면 생략 */
+  unit?: string;
+  /** 설명 라벨 (예: "누적 시공") */
+  label: string;
+  /** 추정/예시 값이면 true → 교체 필요 표시 */
+  isPlaceholder?: boolean;
+}
+
 /** 섹션 공통: 작은 제목(eyebrow) + 제목 + 부제 */
 export interface SectionHeading {
   eyebrow?: string;
@@ -120,6 +134,12 @@ export interface LandingContent {
   seo: SeoMeta;
 
   hero: HeroContent;
+
+  /** 1-1. 숫자 신뢰단 (Hero 직후) */
+  stats: {
+    heading?: SectionHeading;
+    items: StatItem[];
+  };
 
   /** 2. 원인 설명 */
   causes: {

@@ -36,15 +36,31 @@ export const demolitionLanding: LandingContent = {
   },
 
   hero: {
-    headline: "임대 계약 끝나가는데\n원상복구 범위 때문에 임대인과 다툼 중이신가요?",
-    subheadline: "철거부터 원상복구까지, 분쟁 없이 한 번에. 사전 현장 진단으로 범위를 명확히 합니다.",
+    headline: "철거부터 상가 원상복구까지\n누적 8,468건, 분쟁 없이 한 번에",
+    subheadline:
+      "바가지·추가비용 걱정 없는 투명 확정견적과 시공 전/후 사진 보고서로, 철거·상가·사무실 원상복구를 임대인 분쟁 없이 끝냅니다.",
+    // public/images/hero-demolition.jpg 에 사진을 넣으면 자동 적용됩니다. (없으면 틸 배경 유지)
+    backgroundImage: "/images/hero-demolition.jpg",
     badges: [
-      // [추정치] 실제 누적 시공 건수로 교체
-      { icon: "Hammer", label: "누적 시공 OOO건", isPlaceholder: true },
+      { icon: "Hammer", label: "누적 시공 8,468건" },
       // [PLACEHOLDER] 실제 보유 면허/등록증으로 교체
       { icon: "BadgeCheck", label: "관련 면허 보유", isPlaceholder: true },
       { icon: "Truck", label: "전국 출장 가능" },
       { icon: "Camera", label: "시공 전/후 사진 보고서" },
+    ],
+  },
+
+  stats: {
+    heading: {
+      eyebrow: "숫자로 증명합니다",
+      title: "믿고 맡기는 데는 이유가 있습니다",
+    },
+    // 8,468건만 실제값. 나머지는 [추정치/예시] — 실제 실적으로 교체 필요.
+    items: [
+      { value: "8,468", unit: "건", label: "누적 시공" },
+      { value: "12", unit: "년", label: "업력", isPlaceholder: true },
+      { value: "98", unit: "%", label: "고객 재의뢰·추천율", isPlaceholder: true },
+      { value: "100", unit: "%", label: "시공 전/후 사진 보고서 제공" },
     ],
   },
 
