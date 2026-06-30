@@ -9,11 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // 브랜드 컬러 — 신뢰감을 주는 네이비 + 행동을 유도하는 액션 컬러
+        // 브랜드 컬러 — 전문적이고 신뢰감을 주는 딥 틸(페트롤) + 행동 유도 액션 컬러
         brand: {
-          DEFAULT: "#0f2c4c",
-          light: "#1c4670",
-          dark: "#0a2138",
+          DEFAULT: "#0e4f54",
+          light: "#15727a",
+          dark: "#0b3b3e",
         },
         accent: {
           DEFAULT: "#f97316", // CTA 강조용 오렌지
