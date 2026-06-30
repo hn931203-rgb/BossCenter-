@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm -v)",
+      "PowerShell(node -v)",
+      "PowerShell(npm -v)",
+      "PowerShell(npx --version)",
+      "PowerShell($paths = @\\(\"C:\\\\Program Files\\\\nodejs\\\\node.exe\", \"$env:LOCALAPPDATA\\\\Programs\\\\nodejs\\\\node.exe\", \"$env:APPDATA\\\\npm\\\\node.exe\", \"C:\\\\Program Files \\(x86\\)\\\\nodejs\\\\node.exe\"\\); foreach\\($p in $paths\\){ if\\(Test-Path $p\\){ Write-Output \"FOUND: $p\" } }; Write-Output \"--- where node ---\"; Get-Command node -ErrorAction SilentlyContinue; Write-Output \"--- nvm ---\"; if\\(Test-Path \"$env:APPDATA\\\\nvm\"\\){ Get-ChildItem \"$env:APPDATA\\\\nvm\" -Name })",
+      "PowerShell($w = Get-Command winget -ErrorAction SilentlyContinue; if\\($w\\){ \"winget AVAILABLE: \" + $w.Source } else { \"winget NOT available\" })",
+      "PowerShell(winget install --id OpenJS.NodeJS.LTS -e --silent --accept-source-agreements --accept-package-agreements)",
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); & \"C:\\\\Program Files\\\\nodejs\\\\node.exe\" -v; & \"C:\\\\Program Files\\\\nodejs\\\\npm.cmd\" -v)",
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); Set-Location \"C:\\\\Users\\\\Administrator\\\\Desktop\\\\BossCenter\"; npm install --no-fund --no-audit 2>&1 | Select-Object -Last 20)",
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); Set-Location \"C:\\\\Users\\\\Administrator\\\\Desktop\\\\BossCenter\"; npm install next@14 --no-fund --no-audit 2>&1 | Select-Object -Last 8; Write-Output \"--- installed next version ---\"; \\(Get-Content node_modules\\\\next\\\\package.json | ConvertFrom-Json\\).version)",
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); Set-Location \"C:\\\\Users\\\\Administrator\\\\Desktop\\\\BossCenter\"; npm run build 2>&1 | Select-Object -Last 40)",
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); Set-Location \"C:\\\\Users\\\\Administrator\\\\Desktop\\\\BossCenter\"; npm run dev 2>&1 | Out-File \"$env:TEMP\\\\bosscenter-dev.log\" -Encoding utf8)",
+      "mcp__Claude_Preview__preview_start",
+      "PowerShell($conns = Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue; foreach\\($c in $conns\\){ Stop-Process -Id $c.OwningProcess -Force -ErrorAction SilentlyContinue; \"Killed PID $\\($c.OwningProcess\\)\" }; Start-Sleep -Seconds 1; \"done\")"
+    ]
+  }
+}
