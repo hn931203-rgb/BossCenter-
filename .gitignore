@@ -3,6 +3,9 @@
 /.pnp
 .pnp.js
 
+# testing
+/coverage
+
 # next.js
 /.next/
 /out/
@@ -21,7 +24,19 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
+
+# vercel
+.vercel
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# IDE / local settings
+.vscode/
+.idea/
+.claude/settings.local.json
+.claude/launch.json
+launch.json
+settings.local.json
